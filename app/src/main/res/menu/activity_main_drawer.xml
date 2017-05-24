@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Categorias">
+        <menu>
+            <item
+                android:id="@+id/categoria1"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Cabañas" />
+            <item
+                android:id="@+id/categoria2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Hotel" />
+            <item
+                android:id="@+id/categoria3"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Camping" />
+            <item
+                android:id="@+id/categoria4"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Piscinas" />
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/perfil"
+            android:checkable="false"
+            android:checked="false"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/ajustes"
+            android:checkable="false"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Ajustes" />
+
+    </group>
+    <!--
+        <item android:title="Communicate">
+            <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Share" />
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="Send" />
+            </menu>
+        </item>
+    -->
+    </menu>
