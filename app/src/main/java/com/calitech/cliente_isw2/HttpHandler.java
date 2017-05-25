@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
- 
+
 /**
  * Created by Ravi Tamada on 01/09/16.
  * www.androidhive.info
@@ -19,7 +19,6 @@ import java.net.URL;
 public class HttpHandler {
  
     private static final String TAG = HttpHandler.class.getSimpleName();
- 
     public HttpHandler() {
     }
  
@@ -29,9 +28,13 @@ public class HttpHandler {
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+
             // read the response
             InputStream in = new BufferedInputStream(conn.getInputStream());
+
+            //Composicion respuesta
             response = convertStreamToString(in);
+
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
         } catch (ProtocolException e) {
@@ -50,8 +53,17 @@ public class HttpHandler {
  
         String line;
         try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append('\n');
+            //Solucion parche
+            line = reader.readLine();
+            int i =0;
+            while ((line = reader.readLine()) != null && (line != "DbConnect.php")) {
+
+                Log.v("line", line);
+                if(i>0){
+                    sb.append(line).append('\n');
+                    Log.v("line", line);
+                }
+                i++;
             }
         } catch (IOException e) {
             e.printStackTrace();

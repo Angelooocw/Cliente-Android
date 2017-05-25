@@ -124,18 +124,19 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             outputStream.close();
 
             // Recibiendo datos desde el servidor.
-
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso8859-1"));
 
+            // Componiendo el string de respuesta
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso8859-1"));
             String response = "";
             String line = "";
             while((line = bufferedReader.readLine()) != null){
                 response += line;
             }
-
             bufferedReader.close();
             inputStream.close();
+            // Termino composicion
+
             httpURLConnection.disconnect();
             return response;
 
