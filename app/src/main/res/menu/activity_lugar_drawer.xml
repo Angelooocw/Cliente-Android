@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/Cabaña_lugar"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Cabañas" />
-        <item
-            android:id="@+id/Hotel_lugar"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Hotel" />
-        <item
-            android:id="@+id/Camping_lugar"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Camping" />
-        <item
-            android:id="@+id/Piscina_Lugar"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Piscinas" />
-    </group>
-
-    <item android:title="Communicate">
+    <item android:title="Categorias">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
+                android:id="@+id/Cabaña_lugar"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Cabañas" />
+            <item
+                android:id="@+id/Hotel_lugar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Hotel" />
+            <item
+                android:id="@+id/Camping_lugar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Camping" />
+            <item
+                android:id="@+id/Piscina_Lugar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Piscinas" />
         </menu>
     </item>
 
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/perfil_lugar"
+            android:checkable="false"
+            android:checked="false"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/ajustes_lugar"
+            android:checkable="false"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Ajustes" />
+
+    </group>
 </menu>

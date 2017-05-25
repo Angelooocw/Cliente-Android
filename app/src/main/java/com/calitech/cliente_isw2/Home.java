@@ -82,6 +82,7 @@ public class Home extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            setContentView(R.layout.itinerario_ejemplo);
             return true;
         }
 
