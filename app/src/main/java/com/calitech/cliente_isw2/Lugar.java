@@ -162,23 +162,6 @@ public class Lugar extends AppCompatActivity
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url);
-            String retorno = "{\n" +
-                    "                    \"error\":false,\n" +
-                    "                    \"tasks\":[\n" +
-                    "            {\n" +
-                    "                \"id_lugar\":\"LG1\",\n" +
-                    "                    \"selloQ\":\"Sin sello Q\",\n" +
-                    "                    \"rut_empresario\":\"6024176-7\",\n" +
-                    "                    \"ubicacion\":null\n" +
-                    "            },\n" +
-                    "            {\n" +
-                    "                \"id_lugar\":\"LG2\",\n" +
-                    "                    \"selloQ\":\"Sin sello Q\",\n" +
-                    "                    \"rut_empresario\":\"76087974-6\",\n" +
-                    "                    \"ubicacion\":null\n" +
-                    "            }\n" +
-                    "   ]\n" +
-                    "}";
             Log.e(TAG, "Response from url: " + jsonStr);
 
            if (jsonStr != null) {
