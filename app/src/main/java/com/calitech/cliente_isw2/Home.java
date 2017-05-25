@@ -101,19 +101,19 @@ public class Home extends AppCompatActivity
 
         }
         else if (id == R.id.Cabañas) {
-            startActivity(new Intent(this, resultado_lugares.class));
+            startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Hotel) {
-            startActivity(new Intent(this, resultado_lugares.class));
+            startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Camping) {
-            startActivity(new Intent(this, resultado_lugares.class));
+            startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Piscinas) {
-            startActivity(new Intent(this, resultado_lugares.class));
+            startActivity(new Intent(this, Lugar.class));
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

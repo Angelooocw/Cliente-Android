@@ -22,14 +22,13 @@
             android:name=".Registro"
             android:label="Registro" />
         <activity android:name=".Ventana_vacia" />
-        <activity android:name=".resultado_lugares" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Resultado_Lugares"
-            android:label="@string/title_activity_resultado__lugares"
+            android:name=".Lugar"
+            android:label="@string/title_activity_lugar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,11 +1,21 @@
 package com.calitech.cliente_isw2;
 
-
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -18,16 +28,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+public class Lugar extends AppCompatActivity
 
 
-public class resultado_lugares extends AppCompatActivity {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private String TAG = MainActivity.class.getSimpleName();
 
     private ProgressDialog pDialog;
     private ListView lv;
 
-
+    // URL to get contacts JSON
     private static String url = "http://api.androidhive.info/contacts/";
 
     ArrayList<HashMap<String, String>> contactList;
@@ -35,22 +46,44 @@ public class resultado_lugares extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultado_lugares);
+        setContentView(R.layout.activity_lugar);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         contactList = new ArrayList<>();
 
         lv = (ListView) findViewById(R.id.list);
-        new GetContacts().execute();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        new GetContacts().execute();
     }
 
+    /**
+     * Async task class to get json by making HTTP call
+     */
     private class GetContacts extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(resultado_lugares.this);
+            pDialog = new ProgressDialog(Lugar.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -137,17 +170,88 @@ public class resultado_lugares extends AppCompatActivity {
             // Dismiss the progress dialog
             if (pDialog.isShowing())
                 pDialog.dismiss();
-
+            /**
+             * Updating parsed JSON data into ListView
+             * */
             ListAdapter adapter = new SimpleAdapter(
-                    resultado_lugares.this, contactList,
+                    Lugar.this, contactList,
                     R.layout.lugar, new String[]{"name", "email",
                     "mobile"}, new int[]{R.id.name,
                     R.id.email, R.id.mobile});
 
             lv.setAdapter(adapter);
         }
+
+    }
+
+
+
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.lugar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.perfil) {
+
+
+        } else if (id == R.id.ajustes) {
+
+        }
+        else if (id == R.id.Cabaña_lugar) {
+            startActivity(new Intent(this, Lugar.class));
+
+        }
+        else if (id == R.id.Hotel_lugar) {
+            startActivity(new Intent(this, Lugar.class));
+
+        }
+        else if (id == R.id.Camping_lugar) {
+            startActivity(new Intent(this, Lugar.class));
+
+        }
+        else if (id == R.id.Piscina_Lugar) {
+            startActivity(new Intent(this, Home.class));
+
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
-
-
-
