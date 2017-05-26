@@ -29,6 +29,10 @@
         <activity
             android:name=".Lugar"
             android:label="@string/title_activity_lugar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Itinerario"
+            android:label="@string/title_activity_itinerario"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

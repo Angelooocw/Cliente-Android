@@ -35,8 +35,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
     private ListView lv;
 
     // URL to get contacts JSON
-    //private static String url = "http://api.androidhive.info/contacts/";
-    private static String url = "http://10.0.2.2/proyectosxampp/isw2Api/v1/lugares_turisticos";
+    private static String url = "http://api.androidhive.info/contacts/";
+    //private static String url = "http://10.0.2.2/proyectosxampp/isw2Api/v1/lugares_turisticos";
 
     ArrayList<HashMap<String, String>> contactList;
 
