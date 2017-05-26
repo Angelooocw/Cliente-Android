@@ -7,19 +7,19 @@
             <item
                 android:id="@+id/Cabañas"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Cabañas" />
+                android:title="Restaurantes" />
             <item
                 android:id="@+id/Hotel"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Hotel" />
+                android:title="Alojamiento" />
             <item
                 android:id="@+id/Camping"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Camping" />
+                android:title="Aventura" />
             <item
                 android:id="@+id/Piscinas"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Piscinas" />
+                android:title="Esparcimiento" />
         </menu>
     </item>
 

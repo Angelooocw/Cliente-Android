@@ -6,19 +6,19 @@
             <item
                 android:id="@+id/Cabaña_lugar"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Cabañas" />
+                android:title="Restaurantes" />
             <item
                 android:id="@+id/Hotel_lugar"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Hotel" />
+                android:title="Alojamiento" />
             <item
                 android:id="@+id/Camping_lugar"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Camping" />
+                android:title="Aventura" />
             <item
                 android:id="@+id/Piscina_Lugar"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Piscinas" />
+                android:title="Esparcimiento" />
         </menu>
     </item>
 

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -33,6 +34,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
     private String TAG = MainActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView listView;
+    private TextView dispSearchingBy;
 
     // URL to get contacts JSON
     //private static String url = "http://api.androidhive.info/contacts/";
@@ -46,6 +48,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         setContentView(R.layout.activity_lugar);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        dispSearchingBy = (TextView) findViewById(R.id.dispSearchingBy);
+
         setSupportActionBar(toolbar);
         contactList = new ArrayList<>();
 
@@ -54,6 +58,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         String categoria = in.getStringExtra("Categoria");
         ///////////////////////////////
 
+        dispSearchingBy.setText("Buscando por: " + categoria);
 
         listView = (ListView) findViewById(R.id.list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -168,9 +173,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
             // Making a request to url and getting response
 
             String jsonStr = sh.makeServiceCall(url);
-            /*
            if (jsonStr != null) {
-              /*
+
                try {
                   JSONObject jsonObj = new JSONObject(jsonStr);
                   // Getting JSON Array node
@@ -226,7 +230,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                     }
                 });
 
-            }*/
+            }
 
             return null;
         }
@@ -252,7 +256,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                             R.id.txt_lugar_comuna,
                             R.id.txt_lugar_empresario,
                             R.id.txt_lugar_descripcion,
-                            R.id.txt_iti_feca});
+                            R.id.txt_lugar_ubicacion});
 
             listView.setAdapter(adapter);
         }
@@ -365,7 +369,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                     R.id.txt_lugar_comuna,
                     R.id.txt_lugar_empresario,
                     R.id.txt_lugar_descripcion,
-                    R.id.txt_iti_feca});
+                    R.id.txt_lugar_ubicacion});
 
             listView.setAdapter(adapter);
         }

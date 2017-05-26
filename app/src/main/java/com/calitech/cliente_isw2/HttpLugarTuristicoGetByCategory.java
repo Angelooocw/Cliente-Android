@@ -24,7 +24,9 @@ public class HttpLugarTuristicoGetByCategory {
 
     public String makeServiceCall(String reqUrl, String... params) {
         String response = null;
-        String categoria = "Restaurantes y Simil";
+        //String categoria = "Restaurantes y Simil";
+        String categoria = params[0];
+
         Log.e("Make Service Categoria", categoria);
 
         try {

@@ -29,9 +29,6 @@ public class Home extends AppCompatActivity
 
         listViewPrincipal = (ListView)findViewById(R.id.list1);
 
-        //ArrayAdapter <String>adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, paises);
-        //listViewPrincipal.setAdapter(adapter);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -102,21 +99,30 @@ public class Home extends AppCompatActivity
         else if (id == R.id.Cabañas) {
 
             Intent intent = new Intent(this, Lugar.class);
-            intent.putExtra("Categoria", "cabaña");
+            intent.putExtra("Categoria", "Restaurantes y Simil");
             startActivity(intent);
             //startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Hotel) {
-            startActivity(new Intent(this, Lugar.class));
+            //startActivity(new Intent(this, Lugar.class));
+            Intent intent = new Intent(this, Lugar.class);
+            intent.putExtra("Categoria", "Alojamiento Turístico");
+            startActivity(intent);
 
         }
         else if (id == R.id.Camping) {
-            startActivity(new Intent(this, Lugar.class));
+            Intent intent = new Intent(this, Lugar.class);
+            intent.putExtra("Categoria", "Turismo Aventura");
+            startActivity(intent);
+            //startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Piscinas) {
-            startActivity(new Intent(this, Lugar.class));
+            Intent intent = new Intent(this, Lugar.class);
+            intent.putExtra("Categoria", "Servicios de Esparcimiento");
+            startActivity(intent);
+            //startActivity(new Intent(this, Lugar.class));
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
