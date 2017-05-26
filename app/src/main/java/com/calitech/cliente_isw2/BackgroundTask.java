@@ -115,6 +115,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
+
+            //Composicion string envio
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             String data = URLEncoder.encode("login_correo","UTF-8") + "=" + URLEncoder.encode(correo,"UTF-8")
                     + "&"+ URLEncoder.encode("login_clave","UTF-8") + "=" + URLEncoder.encode(clave,"UTF-8");
@@ -122,6 +124,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
+            // Termino composicion
 
             // Recibiendo datos desde el servidor.
             InputStream inputStream = httpURLConnection.getInputStream();

@@ -19,9 +19,7 @@ import android.widget.ListView;
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String[] paises={"Argentina","Chile","Paraguay","Bolivia","Peru",
-            "Ecuador","Brasil","Colombia","Venezuela","Uruguay"};
-    private ListView lv1;
+    private ListView listViewPrincipal;
 
 
     @Override
@@ -29,10 +27,10 @@ public class Home extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        lv1= (ListView)findViewById(R.id.list1);
+        listViewPrincipal = (ListView)findViewById(R.id.list1);
 
-        ArrayAdapter <String>adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, paises);
-        lv1.setAdapter(adapter);
+        //ArrayAdapter <String>adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, paises);
+        //listViewPrincipal.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -102,7 +100,11 @@ public class Home extends AppCompatActivity
 
         }
         else if (id == R.id.Cabañas) {
-            startActivity(new Intent(this, Lugar.class));
+
+            Intent intent = new Intent(this, Lugar.class);
+            intent.putExtra("Categoria", "cabaña");
+            startActivity(intent);
+            //startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Hotel) {
