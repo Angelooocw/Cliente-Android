@@ -28,13 +28,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lugar extends AppCompatActivity
-
-
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Lugar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private String TAG = MainActivity.class.getSimpleName();
-
     private ProgressDialog pDialog;
     private ListView lv;
 
@@ -163,6 +159,7 @@ public class Lugar extends AppCompatActivity
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url);
+            String datosJuguete = "{\"error\":false,\"tasks\":[{\"id_lugar\":\"LG1\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"6024176-7\",\"ubicacion\":null},{\"id_lugar\":\"LG2\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"76087974-6\",\"ubicacion\":null},{\"id_lugar\":\"LG3\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"76071917-k\",\"ubicacion\":null},{\"id_lugar\":\"LG4\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"7288204-0\",\"ubicacion\":null},{\"id_lugar\":\"LG5\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"4393038-9\",\"ubicacion\":null},{\"id_lugar\":\"LG6\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"10082837-5\",\"ubicacion\":null},{\"id_lugar\":\"LG7\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"17616126-4\",\"ubicacion\":null},{\"id_lugar\":\"LG8\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"12293174-9\",\"ubicacion\":null},{\"id_lugar\":\"LG9\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"7567299-3\",\"ubicacion\":null},{\"id_lugar\":\"LG10\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"8919440-7\",\"ubicacion\":null}]}";
             Log.e(TAG, "Response from url: " + jsonStr);
 
            if (jsonStr != null) {
