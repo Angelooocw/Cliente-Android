@@ -16,10 +16,10 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class HttpGetLTCategory {
+public class HttpLugarTuristicoGetByCategory {
 
     private static final String TAG = HttpHandler.class.getSimpleName();
-    public HttpGetLTCategory() {
+    public HttpLugarTuristicoGetByCategory() {
     }
 
     public String makeServiceCall(String reqUrl, String... params) {

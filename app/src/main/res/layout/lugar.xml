@@ -82,7 +82,7 @@
         android:layout_marginRight="8dp"
         android:textColor="#5d5d5d"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txt_lugar_ubicacion"
+        app:layout_constraintBottom_toTopOf="@+id/txt_iti_feca"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:text="Descripcion"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_lugar_empresario" />
 
     <TextView
-        android:id="@+id/txt_lugar_ubicacion"
+        android:id="@+id/txt_iti_feca"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"

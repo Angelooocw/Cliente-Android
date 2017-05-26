@@ -163,7 +163,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         @Override
         protected Void doInBackground(Void... arg0) {
             //HttpHandler sh = new HttpHandler();
-            HttpGetLTCategory sh = new HttpGetLTCategory();
+            HttpLugarTuristicoGetByCategory sh = new HttpLugarTuristicoGetByCategory();
 
             // Making a request to url and getting response
 
@@ -252,7 +252,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                             R.id.txt_lugar_comuna,
                             R.id.txt_lugar_empresario,
                             R.id.txt_lugar_descripcion,
-                            R.id.txt_lugar_ubicacion});
+                            R.id.txt_iti_feca});
 
             listView.setAdapter(adapter);
         }
@@ -275,7 +275,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         @Override
         protected Void doInBackground(String... arg0) {
             //HttpHandler sh = new HttpHandler();
-            HttpGetLTCategory sh = new HttpGetLTCategory();
+            HttpLugarTuristicoGetByCategory sh = new HttpLugarTuristicoGetByCategory();
 
             // Making a request to url and getting response
 
@@ -365,7 +365,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                     R.id.txt_lugar_comuna,
                     R.id.txt_lugar_empresario,
                     R.id.txt_lugar_descripcion,
-                    R.id.txt_lugar_ubicacion});
+                    R.id.txt_iti_feca});
 
             listView.setAdapter(adapter);
         }

@@ -21,21 +21,21 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 
-public class HttpGetItinerarios {
+public class HttpItinerariosAdd {
 
     private static final String TAG = HttpHandler.class.getSimpleName();
-    public HttpGetItinerarios() {
+    public HttpItinerariosAdd() {
     }
 
     public String makeServiceCall(String reqUrl, String... params) {
 
 
         String response = "";
+        String userid = "joaquin";
+        String itiNombre = params[0];
+        String itiDescripcion = params[1];
 
-        String user_id = "joaquin";
-
-        Log.e("Make Service User Id: ", user_id);
-
+        Log.e("Make Service AddIt: ", userid + " " + itiNombre + " " + itiDescripcion);
 
         try {
 
@@ -47,7 +47,9 @@ public class HttpGetItinerarios {
             //Composicion string envio
             OutputStream outputStream = conn.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String data = URLEncoder.encode("user_id","UTF-8") + "=" + URLEncoder.encode(user_id,"UTF-8");
+            String data = URLEncoder.encode("userid","UTF-8") + "=" + URLEncoder.encode(userid,"UTF-8")
+                    + "&"+ URLEncoder.encode("descripcion","UTF-8") + "=" + URLEncoder.encode(itiDescripcion,"UTF-8")
+                    + "&"+ URLEncoder.encode("nombre_itinerario","UTF-8") + "=" + URLEncoder.encode(itiNombre,"UTF-8");
             bufferedWriter.write(data);
             bufferedWriter.flush();
             bufferedWriter.close();

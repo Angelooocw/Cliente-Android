@@ -19,9 +19,6 @@ import android.widget.ListView;
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private String[] paises={"Argentina","Chile","Paraguay","Bolivia","Peru",
-      //      "Ecuador","Brasil","Colombia","Venezuela","Uruguay"};
-
     private ListView listViewPrincipal;
 
 
