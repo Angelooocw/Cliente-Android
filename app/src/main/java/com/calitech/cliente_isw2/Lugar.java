@@ -248,7 +248,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         "lugar_empresario",
                         "lugar_descripcion",
                         "lugar_ubicacion"}, new int[]{
-                            R.id.txt_lugar_nombre,
+                            R.id.txt_iti_nombre,
                             R.id.txt_lugar_comuna,
                             R.id.txt_lugar_empresario,
                             R.id.txt_lugar_descripcion,
@@ -361,7 +361,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                     "lugar_empresario",
                     "lugar_descripcion",
                     "lugar_ubicacion"}, new int[]{
-                    R.id.txt_lugar_nombre,
+                    R.id.txt_iti_nombre,
                     R.id.txt_lugar_comuna,
                     R.id.txt_lugar_empresario,
                     R.id.txt_lugar_descripcion,

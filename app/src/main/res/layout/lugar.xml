@@ -20,7 +20,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/txt_lugar_nombre"
+        android:id="@+id/txt_iti_nombre"
         android:layout_width="194dp"
         android:layout_height="35dp"
         android:layout_marginLeft="0dp"
@@ -51,7 +51,7 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/imageView2"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_lugar_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/txt_iti_nombre"
         tools:text="Comuna"
         app:layout_constraintHorizontal_bias="0.636" />
 

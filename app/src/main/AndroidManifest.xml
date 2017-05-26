@@ -21,7 +21,6 @@
         <activity
             android:name=".Registro"
             android:label="Registro" />
-        <activity android:name=".Ventana_vacia" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
