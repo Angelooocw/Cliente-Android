@@ -200,12 +200,12 @@ public class Itinerario extends AppCompatActivity {
                     String s = jsonObj.getString("message");
                     Log.e("message",s);
 
-
+                    /*
                     Toast.makeText(getApplicationContext(),
                             "Message: " + s,
                             Toast.LENGTH_LONG)
                             .show();
-
+*/
 
 
                 } catch (final JSONException e) {
