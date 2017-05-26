@@ -75,7 +75,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        new GetContacts().execute();
+        //new GetContacts().execute();
+        new GetLugaresByCategoria().execute(categoria);
     }
 
     @Override
@@ -161,15 +162,16 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            HttpHandler sh = new HttpHandler();
+            //HttpHandler sh = new HttpHandler();
+            HttpGetLTCategory sh = new HttpGetLTCategory();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url);
-            String datosJuguete = "{\"error\":false,\"tasks\":[{\"id_lugar\":\"LG1\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"6024176-7\",\"ubicacion\":null},{\"id_lugar\":\"LG2\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"76087974-6\",\"ubicacion\":null},{\"id_lugar\":\"LG3\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"76071917-k\",\"ubicacion\":null},{\"id_lugar\":\"LG4\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"7288204-0\",\"ubicacion\":null},{\"id_lugar\":\"LG5\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"4393038-9\",\"ubicacion\":null},{\"id_lugar\":\"LG6\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"10082837-5\",\"ubicacion\":null},{\"id_lugar\":\"LG7\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"17616126-4\",\"ubicacion\":null},{\"id_lugar\":\"LG8\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"12293174-9\",\"ubicacion\":null},{\"id_lugar\":\"LG9\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"7567299-3\",\"ubicacion\":null},{\"id_lugar\":\"LG10\",\"selloQ\":\"Sin sello Q\",\"rut_empresario\":\"8919440-7\",\"ubicacion\":null}]}";
-            Log.e(TAG, "Response from url: " + jsonStr);
 
+            String jsonStr = sh.makeServiceCall(url);
+            /*
            if (jsonStr != null) {
-              try {
+              /*
+               try {
                   JSONObject jsonObj = new JSONObject(jsonStr);
                   // Getting JSON Array node
                   JSONArray contacts = jsonObj.getJSONArray("tasks");
@@ -184,13 +186,119 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         String lugar_empresario = c.getString("rut_empresario");
                         String lugar_ubicacion = c.getString("ubicacion");
                         String lugar_sello = c.getString("selloQ");
-                        //String gender = c.getString("gender");
 
-                        // Phone node is JSON Object
-//                        JSONObject phone = c.getJSONObject("phone");
-//                        String mobile = phone.getString("mobile");
-//                        String home = phone.getString("home");
-//                        String office = phone.getString("office");
+                        // tmp hash map for single contact
+                        HashMap<String, String> contact = new HashMap<>();
+
+                        // adding each child node to HashMap key => value
+                        contact.put("lugar_nombre", lugar_nombre);
+                        contact.put("lugar_comuna", lugar_comuna);
+                        contact.put("lugar_descripcion", lugar_descripcion);
+                        contact.put("lugar_empresario", lugar_empresario);
+                        contact.put("lugar_ubicacion", lugar_ubicacion);
+                        contact.put("lugar_sello", lugar_sello);
+
+                        // adding contact to contact list
+                        contactList.add(contact);
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+
+                }
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+            }*/
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+            ListAdapter adapter = new SimpleAdapter(
+                    Lugar.this, contactList,
+                    R.layout.lugar, new String[]{
+                        "lugar_nombre",
+                        "lugar_comuna",
+                        "lugar_empresario",
+                        "lugar_descripcion",
+                        "lugar_ubicacion"}, new int[]{
+                            R.id.txt_lugar_nombre,
+                            R.id.txt_lugar_comuna,
+                            R.id.txt_lugar_empresario,
+                            R.id.txt_lugar_descripcion,
+                            R.id.txt_lugar_ubicacion});
+
+            listView.setAdapter(adapter);
+        }
+
+    }
+
+    private class GetLugaresByCategoria extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(Lugar.this);
+            pDialog.setMessage("Please wait...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(String... arg0) {
+            //HttpHandler sh = new HttpHandler();
+            HttpGetLTCategory sh = new HttpGetLTCategory();
+
+            // Making a request to url and getting response
+
+            String jsonStr = sh.makeServiceCall(url, arg0);
+            Log.e("SERVER_RESPONSE",jsonStr);
+
+           if (jsonStr != null) {
+
+               try {
+                  JSONObject jsonObj = new JSONObject(jsonStr);
+                  // Getting JSON Array node
+                  JSONArray contacts = jsonObj.getJSONArray("lugares_turisticos");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < contacts.length(); i++) {
+                        JSONObject c = contacts.getJSONObject(i);
+
+                        String lugar_nombre = c.getString("nombre");
+                        String lugar_comuna = c.getString("comuna");
+                        String lugar_descripcion = c.getString("descripcion");
+                        String lugar_empresario = c.getString("rut_empresario");
+                        String lugar_ubicacion = c.getString("ubicacion");
+                        String lugar_sello = c.getString("selloQ");
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
@@ -248,16 +356,16 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
             ListAdapter adapter = new SimpleAdapter(
                     Lugar.this, contactList,
                     R.layout.lugar, new String[]{
-                        "lugar_nombre",
-                        "lugar_comuna",
-                        "lugar_empresario",
-                        "lugar_descripcion",
-                        "lugar_ubicacion"}, new int[]{
-                            R.id.txt_lugar_nombre,
-                            R.id.txt_lugar_comuna,
-                            R.id.txt_lugar_empresario,
-                            R.id.txt_lugar_descripcion,
-                            R.id.txt_lugar_ubicacion});
+                    "lugar_nombre",
+                    "lugar_comuna",
+                    "lugar_empresario",
+                    "lugar_descripcion",
+                    "lugar_ubicacion"}, new int[]{
+                    R.id.txt_lugar_nombre,
+                    R.id.txt_lugar_comuna,
+                    R.id.txt_lugar_empresario,
+                    R.id.txt_lugar_descripcion,
+                    R.id.txt_lugar_ubicacion});
 
             listView.setAdapter(adapter);
         }

@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 public class Itinerario extends AppCompatActivity {
 
-    private String[] paises={"Argentina","Chile","Paraguay","Bolivia","Peru",
-            "Ecuador","Brasil","Colombia","Venezuela","Uruguay"};
+    //private String[] paises={"Argentina","Chile","Paraguay","Bolivia","Peru",
+      //      "Ecuador","Brasil","Colombia","Venezuela","Uruguay"};
     private ListView lv2;
 
     @Override
@@ -22,9 +22,8 @@ public class Itinerario extends AppCompatActivity {
 
         lv2= (ListView)findViewById(R.id.list2);
 
-        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, paises);
-
-        lv2.setAdapter(adapter);
+        //ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, paises);
+        //lv2.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
