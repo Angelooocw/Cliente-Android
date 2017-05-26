@@ -32,11 +32,11 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
 
     private String TAG = MainActivity.class.getSimpleName();
     private ProgressDialog pDialog;
-    private ListView lv;
+    private ListView listView;
 
     // URL to get contacts JSON
-    private static String url = "http://api.androidhive.info/contacts/";
-    //private static String url = "http://10.0.2.2/proyectosxampp/isw2Api/v1/lugares_turisticos";
+    //private static String url = "http://api.androidhive.info/contacts/";
+    private static String url = "http://10.0.2.2/proyectosxampp/isw2Api/v1/lugares_turisticos";
 
     ArrayList<HashMap<String, String>> contactList;
 
@@ -49,7 +49,13 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         setSupportActionBar(toolbar);
         contactList = new ArrayList<>();
 
-        lv = (ListView) findViewById(R.id.list);
+        // get intent content
+        Intent in = getIntent();
+        String categoria = in.getStringExtra("Categoria");
+        ///////////////////////////////
+
+
+        listView = (ListView) findViewById(R.id.list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,19 +171,19 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
            if (jsonStr != null) {
               try {
                   JSONObject jsonObj = new JSONObject(jsonStr);
-                  Log.v(TAG, "Response from url2: " + jsonObj);
                   // Getting JSON Array node
                   JSONArray contacts = jsonObj.getJSONArray("tasks");
-                  Log.v(TAG, "Response from url3: " + contacts);
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
 
-                        String id_lugar = c.getString("id_lugar");
-                        String name = c.getString("selloQ");
-                        String email = c.getString("rut_empresario");
-                        String ubicacion = c.getString("ubicacion");
+                        String lugar_nombre = c.getString("nombre");
+                        String lugar_comuna = c.getString("comuna");
+                        String lugar_descripcion = c.getString("descripcion");
+                        String lugar_empresario = c.getString("rut_empresario");
+                        String lugar_ubicacion = c.getString("ubicacion");
+                        String lugar_sello = c.getString("selloQ");
                         //String gender = c.getString("gender");
 
                         // Phone node is JSON Object
@@ -190,10 +196,12 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        contact.put("id_lugar", id_lugar);
-                        contact.put("name", name);
-                        contact.put("email", email);
-                        contact.put("ubicacion", ubicacion);
+                        contact.put("lugar_nombre", lugar_nombre);
+                        contact.put("lugar_comuna", lugar_comuna);
+                        contact.put("lugar_descripcion", lugar_descripcion);
+                        contact.put("lugar_empresario", lugar_empresario);
+                        contact.put("lugar_ubicacion", lugar_ubicacion);
+                        contact.put("lugar_sello", lugar_sello);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -239,11 +247,19 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Lugar.this, contactList,
-                    R.layout.lugar, new String[]{"id_lugar","name", "email",
-                    "ubicacion"}, new int[]{R.id.id_lugar,R.id.name,
-                    R.id.email, R.id.ubicacion});
+                    R.layout.lugar, new String[]{
+                        "lugar_nombre",
+                        "lugar_comuna",
+                        "lugar_empresario",
+                        "lugar_descripcion",
+                        "lugar_ubicacion"}, new int[]{
+                            R.id.txt_lugar_nombre,
+                            R.id.txt_lugar_comuna,
+                            R.id.txt_lugar_empresario,
+                            R.id.txt_lugar_descripcion,
+                            R.id.txt_lugar_ubicacion});
 
-            lv.setAdapter(adapter);
+            listView.setAdapter(adapter);
         }
 
     }

@@ -102,7 +102,11 @@ public class Home extends AppCompatActivity
 
         }
         else if (id == R.id.Cabañas) {
-            startActivity(new Intent(this, Lugar.class));
+
+            Intent intent = new Intent(this, Lugar.class);
+            intent.putExtra("Categoria", "cabaña");
+            startActivity(intent);
+            //startActivity(new Intent(this, Lugar.class));
 
         }
         else if (id == R.id.Hotel) {
