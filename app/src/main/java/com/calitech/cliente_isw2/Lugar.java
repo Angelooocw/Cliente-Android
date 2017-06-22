@@ -256,7 +256,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                             R.id.txt_lugar_comuna,
                             R.id.txt_lugar_empresario,
                             R.id.txt_lugar_descripcion,
-                            R.id.txt_lugar_ubicacion});
+                            //R.id.txt_lugar_ubicacion
+                     });
 
             listView.setAdapter(adapter);
         }
@@ -369,7 +370,8 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                     R.id.txt_lugar_comuna,
                     R.id.txt_lugar_empresario,
                     R.id.txt_lugar_descripcion,
-                    R.id.txt_lugar_ubicacion});
+                    //R.id.txt_lugar_ubicacion
+                    });
 
             listView.setAdapter(adapter);
         }
