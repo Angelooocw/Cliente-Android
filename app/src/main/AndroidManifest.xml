@@ -33,6 +33,9 @@
             android:name=".Itinerario"
             android:label="@string/title_activity_itinerario"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".comentarios_all"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
