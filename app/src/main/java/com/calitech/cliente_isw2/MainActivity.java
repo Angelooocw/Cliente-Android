@@ -118,5 +118,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void comentarios_test(View v){
+
+        Intent i = new Intent(this, comentarios_all.class);
+        startActivity(i);
+    }
+
 }
 
