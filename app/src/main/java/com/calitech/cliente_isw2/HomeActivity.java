@@ -13,10 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Home extends AppCompatActivity
+public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listViewPrincipal;
@@ -25,7 +24,7 @@ public class Home extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_drawer_home);
 
         listViewPrincipal = (ListView)findViewById(R.id.list1);
 
@@ -36,7 +35,7 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Crear Itinerario", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Crear ItinerarioActivity", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -71,13 +70,13 @@ public class Home extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the HomeActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this, Itinerario.class));
+            startActivity(new Intent(this, ItinerarioActivity.class));
             return true;
         }
 
@@ -98,31 +97,31 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.Cabañas) {
 
-            Intent intent = new Intent(this, Lugar.class);
-            intent.putExtra("Categoria", "Restaurantes y Simil");
+            Intent intent = new Intent(this, ResultadoLugarActivity.class);
+            intent.putExtra("Categoria", "Restaurantes y Similares");
             startActivity(intent);
-            //startActivity(new Intent(this, Lugar.class));
+            //startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         else if (id == R.id.Hotel) {
-            //startActivity(new Intent(this, Lugar.class));
-            Intent intent = new Intent(this, Lugar.class);
+            //startActivity(new Intent(this, ResultadoLugarActivity.class));
+            Intent intent = new Intent(this, ResultadoLugarActivity.class);
             intent.putExtra("Categoria", "Alojamiento Turístico");
             startActivity(intent);
 
         }
         else if (id == R.id.Camping) {
-            Intent intent = new Intent(this, Lugar.class);
+            Intent intent = new Intent(this, ResultadoLugarActivity.class);
             intent.putExtra("Categoria", "Turismo Aventura");
             startActivity(intent);
-            //startActivity(new Intent(this, Lugar.class));
+            //startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         else if (id == R.id.Piscinas) {
-            Intent intent = new Intent(this, Lugar.class);
+            Intent intent = new Intent(this, ResultadoLugarActivity.class);
             intent.putExtra("Categoria", "Servicios de Esparcimiento");
             startActivity(intent);
-            //startActivity(new Intent(this, Lugar.class));
+            //startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

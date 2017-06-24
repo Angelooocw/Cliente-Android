@@ -21,11 +21,11 @@ import java.net.URLEncoder;
  * Created by jquin on 30-04-2017.
  */
 
-public class BackgroundTask extends AsyncTask<String, Void, String> {
+public class HttpLoginRegistro extends AsyncTask<String, Void, String> {
     private AlertDialog alertDialog;
     private Context ctx;
 
-    public BackgroundTask( Context ctx){
+    public HttpLoginRegistro(Context ctx){
         this.ctx = ctx;
     }
 

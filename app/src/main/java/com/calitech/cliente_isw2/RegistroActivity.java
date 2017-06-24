@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Registro extends AppCompatActivity {
+public class RegistroActivity extends AppCompatActivity {
 
     private EditText edtNombre, edtUsuario,edtClave,edtClaveConfirmacion,edtCorreo;
     String nombre, usuario, clave, claveConfirmacion, correo;
@@ -41,7 +41,7 @@ public class Registro extends AppCompatActivity {
         correo = edtNombre.getText().toString();
 
         String method = "register";
-        BackgroundTask backgroundTask = new BackgroundTask(this);
+        HttpLoginRegistro backgroundTask = new HttpLoginRegistro(this);
         backgroundTask.execute(method, nombre, usuario, clave, correo);
 
         finish();

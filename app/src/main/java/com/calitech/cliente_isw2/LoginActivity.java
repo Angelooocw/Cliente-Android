@@ -6,19 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 
-public class MainActivity extends AppCompatActivity
+public class LoginActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private EditText edtCorreo, edtClave;
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
 
         edtClave = (EditText) findViewById(R.id.edtLoginClave);
@@ -69,17 +64,17 @@ public class MainActivity extends AppCompatActivity
         login_clave = edtClave.getText().toString();
         String method = "login";
 
-        BackgroundTask backgroundTask = new BackgroundTask(this);
+        HttpLoginRegistro backgroundTask = new HttpLoginRegistro(this);
         backgroundTask.execute(method, login_correo,login_clave);
     }
 
 
 
     public void UserRegistration(View v){
-        startActivity(new Intent(this,Registro.class));
+        startActivity(new Intent(this,RegistroActivity.class));
     }
     public void Omitir(View v){
-        startActivity(new Intent(this,Home.class));
+        startActivity(new Intent(this,HomeActivity.class));
         setContentView(R.layout.content_home);
         setContentView(R.layout.app_bar_home);
     }

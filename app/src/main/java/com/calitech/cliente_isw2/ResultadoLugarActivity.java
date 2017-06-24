@@ -29,23 +29,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lugar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ResultadoLugarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = LoginActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView listView;
     private TextView dispSearchingBy;
 
     // URL to get contacts JSON
     //private static String url = "http://api.androidhive.info/contacts/";
-    private static String url = "http://10.0.2.2/proyectosxampp/isw2Api/v1/lugares_turisticos";
+    private static String url = "http://10.0.2.2/px/isw2Api/v1/lugares_turisticos";
 
     ArrayList<HashMap<String, String>> contactList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lugar);
+        setContentView(R.layout.activity_drawer_lugar);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         dispSearchingBy = (TextView) findViewById(R.id.dispSearchingBy);
@@ -65,7 +65,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Añadir al itinerario", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Añadir al single_itinerario", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
             }
@@ -104,7 +104,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the HomeActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -129,19 +129,19 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
 
         }
         else if (id == R.id.Cabaña_lugar) {
-            startActivity(new Intent(this, Lugar.class));
+            startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         else if (id == R.id.Hotel_lugar) {
-            startActivity(new Intent(this, Lugar.class));
+            startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         else if (id == R.id.Camping_lugar) {
-            startActivity(new Intent(this, Lugar.class));
+            startActivity(new Intent(this, ResultadoLugarActivity.class));
 
         }
         else if (id == R.id.Piscina_Lugar) {
-            startActivity(new Intent(this, Home.class));
+            startActivity(new Intent(this, HomeActivity.class));
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -158,7 +158,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Lugar.this);
+            pDialog = new ProgressDialog(ResultadoLugarActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -188,7 +188,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         String lugar_comuna = c.getString("comuna");
                         String lugar_descripcion = c.getString("descripcion");
                         String lugar_empresario = c.getString("rut_empresario");
-                        String lugar_ubicacion = c.getString("ubicacion");
+                        String lugar_latitud = c.getString("lat");
                         String lugar_sello = c.getString("selloQ");
 
                         // tmp hash map for single contact
@@ -199,7 +199,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         contact.put("lugar_comuna", lugar_comuna);
                         contact.put("lugar_descripcion", lugar_descripcion);
                         contact.put("lugar_empresario", lugar_empresario);
-                        contact.put("lugar_ubicacion", lugar_ubicacion);
+                        contact.put("lugar_latitud", lugar_latitud);
                         contact.put("lugar_sello", lugar_sello);
 
                         // adding contact to contact list
@@ -245,13 +245,13 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Lugar.this, contactList,
+                    ResultadoLugarActivity.this, contactList,
                     R.layout.lugar, new String[]{
                         "lugar_nombre",
                         "lugar_comuna",
                         "lugar_empresario",
                         "lugar_descripcion",
-                        "lugar_ubicacion"}, new int[]{
+                        "lugar_latitud"}, new int[]{
                             R.id.txt_iti_nombre,
                             R.id.txt_lugar_comuna,
                             R.id.txt_lugar_empresario,
@@ -270,7 +270,7 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Lugar.this);
+            pDialog = new ProgressDialog(ResultadoLugarActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -302,22 +302,22 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
                         String lugar_comuna = c.getString("comuna");
                         String lugar_descripcion = c.getString("descripcion");
                         String lugar_empresario = c.getString("rut_empresario");
-                        String lugar_ubicacion = c.getString("ubicacion");
+                        String lugar_latitud = c.getString("lat");
                         String lugar_sello = c.getString("selloQ");
 
                         // tmp hash map for single contact
-                        HashMap<String, String> contact = new HashMap<>();
+                        HashMap<String, String> lugar = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        contact.put("lugar_nombre", lugar_nombre);
-                        contact.put("lugar_comuna", lugar_comuna);
-                        contact.put("lugar_descripcion", lugar_descripcion);
-                        contact.put("lugar_empresario", lugar_empresario);
-                        contact.put("lugar_ubicacion", lugar_ubicacion);
-                        contact.put("lugar_sello", lugar_sello);
+                        lugar.put("lugar_nombre", lugar_nombre);
+                        lugar.put("lugar_comuna", lugar_comuna);
+                        lugar.put("lugar_descripcion", lugar_descripcion);
+                        lugar.put("lugar_empresario", lugar_empresario);
+                        lugar.put("lugar_ubicacion", lugar_latitud);
+                        lugar.put("lugar_sello", lugar_sello);
 
                         // adding contact to contact list
-                        contactList.add(contact);
+                        contactList.add(lugar);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -359,13 +359,13 @@ public class Lugar extends AppCompatActivity implements NavigationView.OnNavigat
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Lugar.this, contactList,
+                    ResultadoLugarActivity.this, contactList,
                     R.layout.lugar, new String[]{
                     "lugar_nombre",
                     "lugar_comuna",
                     "lugar_empresario",
                     "lugar_descripcion",
-                    "lugar_ubicacion"}, new int[]{
+                    "lugar_latitud"}, new int[]{
                     R.id.txt_iti_nombre,
                     R.id.txt_lugar_comuna,
                     R.id.txt_lugar_empresario,

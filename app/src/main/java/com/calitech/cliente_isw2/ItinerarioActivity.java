@@ -16,16 +16,15 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Itinerario extends AppCompatActivity {
+public class ItinerarioActivity extends AppCompatActivity {
 
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = LoginActivity.class.getSimpleName();
     private static String urlItinerariosGet = "http://10.0.2.2/proyectosxampp/isw2Api/v1/itinerarios";
-    private static String urlItinerariosAdd = "http://10.0.2.2/proyectosxampp/isw2Api/v1/itinerario";
+    private static String urlItinerariosAdd = "http://10.0.2.2/proyectosxampp/isw2Api/v1/single_itinerario";
 
     private ProgressDialog pDialog;
     ArrayList<HashMap<String, String>> listaItinerarios;
@@ -68,7 +67,7 @@ public class Itinerario extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Itinerario.this);
+            pDialog = new ProgressDialog(ItinerarioActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -152,8 +151,8 @@ public class Itinerario extends AppCompatActivity {
              * */
 
             ListAdapter adapter = new SimpleAdapter(
-                    Itinerario.this, listaItinerarios,
-                    R.layout.itinerario, new String[]{
+                    ItinerarioActivity.this, listaItinerarios,
+                    R.layout.single_itinerario, new String[]{
                     "itinerario_nombre",
                     "itinerario_descripcion",
                     "itinerario_fecha"
@@ -174,7 +173,7 @@ public class Itinerario extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Itinerario.this);
+            pDialog = new ProgressDialog(ItinerarioActivity.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -248,8 +247,8 @@ public class Itinerario extends AppCompatActivity {
              * */
 
             ListAdapter adapter = new SimpleAdapter(
-                    Itinerario.this, listaItinerarios,
-                    R.layout.itinerario, new String[]{
+                    ItinerarioActivity.this, listaItinerarios,
+                    R.layout.single_itinerario, new String[]{
                     "itinerario_nombre",
                     "itinerario_descripcion",
                     "itinerario_fecha"

@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Vector;
 
 /**
@@ -19,9 +17,9 @@ import java.util.Vector;
  public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentarios.ViewHolder> {
 
     private LayoutInflater inflador;
-     protected Vector<Comentario_Lugar> vectorcomments;
+     protected Vector<ComentarioLugar> vectorcomments;
 
-    public AdaptadorComentarios(Context contexto, Vector<Comentario_Lugar> commen){
+    public AdaptadorComentarios(Context contexto, Vector<ComentarioLugar> commen){
         inflador = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.vectorcomments =commen;
     }
@@ -34,7 +32,7 @@ import java.util.Vector;
 
     @Override
     public void onBindViewHolder(AdaptadorComentarios.ViewHolder holder, int position) {
-    Comentario_Lugar coment_l = vectorcomments.elementAt(position);
+    ComentarioLugar coment_l = vectorcomments.elementAt(position);
         holder.usuario.setText(coment_l.getUser());
         holder.puntaje.setRating(coment_l.getRSTAR());
         holder.comentario.setText(coment_l.getC());
